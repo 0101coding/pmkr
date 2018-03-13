@@ -218,11 +218,11 @@ async function sync() {
             return false;
         }
     }
-
+    //if exist apply modification
     if ((to_sync.count_php + to_sync.count_js) >= 1) {
         await jsonPushToPM();
     }
-    
+    //if no modif sync
     if ((to_sync.count_js+to_sync.count_php)==0) {
         delete to_sync.code_js;
         delete to_sync.code_php;
@@ -230,13 +230,6 @@ async function sync() {
         to_sync.code_js = [];
         await jsonPopulate();
     }
-        // to_sync.count_js=0;
-        // to_sync.count_php=0;
-        // jsonRead();
-        // jsonPushToPM();
-        // jsonPopulate();
-        // //syncDiffManage();
-        // jsonWrite();
 }
 async function jsonPopulate() {
     //retrieve all process
@@ -393,6 +386,14 @@ function endPopulate() {
     //write to fs
     fs.writeFileSync(loc_workspace + "/.PMKRProcess", JSON.stringify(process));
     fs.writeFileSync(loc_workspace + "/.PMKRToSync", JSON.stringify(to_sync));
+    let uri=vscode.Uri.file(loc_workspace);
+    console.log(uri);
+    
+    vscode.commands.executeCommand("vscode.openFolder",uri)
+    .then((res)=>{console.log(res);});
+
+    console.log(uri);
+    
     status_bar.text = "PHP: " + to_sync.count_php + ", JS: " + to_sync.count_js;
     bar_sync.show();
     status_bar.show()
