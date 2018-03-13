@@ -3,7 +3,7 @@
     "displayName": "PMKR",
     "description": "ProcessMaker External Editor",
     "version": "0.0.1",
-    "publisher": "chrdoud",
+    "publisher": "Chris Doudet",
     "engines": {
         "vscode": "^1.20.0"
     },
@@ -11,15 +11,75 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sync"
+        "onCommand:pmkr.sync",
+        "onCommand:pmkr.force_new_sync",
+        "workspaceContains:**/.PMKRProcess"
     ],
     "main": "./extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.sync",
+        "commands": [
+            {
+            "command": "pmkr.sync",
             "title": "Sync",
             "category": "PMKR"
-        }]
+            },
+            {
+            "command": "pmkr.force_new_sync",
+            "title": "Force New Sync",
+            "category": "PMKR"
+            }
+        ],
+        "configuration":{
+            "type": "object",
+            "title": "PMKR_Settings",
+            "properties": {
+                "pmkr_workspace":{
+                    "type": "string",
+                    "default": "workflow",
+                    "description": "ProcessMaker workspace, default is workflow"
+                },
+                "pmkr_client_id":{
+                    "type": "string",
+                    "default": null,
+                    "description": "ProcessMaker Client id. See : http://wiki.processmaker.com/3.1/OAuth_2.0#Registering_an_external_application_to_use_REST"
+                },
+                "pmkr_client_secret":{
+                    "type": "string",
+                    "default": null,
+                    "description": "ProcessMaker Client secret. See : http://wiki.processmaker.com/3.1/OAuth_2.0#Registering_an_external_application_to_use_REST"
+                },
+                "pmkr_username":{
+                    "type": "string",
+                    "default": null,
+                    "description": "The username of a ProcessMaker user, which is case insensitive. See : http://wiki.processmaker.com/3.1/OAuth_2.0#Authorization_and_login_to_obtain_an_access_token"
+                },
+                "pmkr_userpassword":{
+                    "type": "string",
+                    "default": null,
+                    "description": "ProcessMaker user password. See : http://wiki.processmaker.com/3.1/OAuth_2.0#Authorization_and_login_to_obtain_an_access_token"
+                },
+                "pmkr_base_url":{
+                    "type": "string",
+                    "default": null,
+                    "description": "ProcessMaker url, like https://bpm.mycompagny.com' See : http://wiki.processmaker.com/3.0/Calling_REST_Endpoints"
+                },
+                "pmkr_auth_url":{
+                    "type": "string",
+                    "default": "/oauth2/token",
+                    "description": "ProcessMaker Authentification url, default is /oauth2/token. See : http://wiki.processmaker.com/3.1/OAuth_2.0#Authorization_and_login_to_obtain_an_access_token"
+                },
+                "pmkr_api_ver":{
+                    "type": "string",
+                    "default": "/api/1.0",
+                    "description": "ProcessMaker Api version, default is /api/1.0. See : http://wiki.processmaker.com/3.1/REST_API_Administration"
+                },
+                "pmkr_loc_workspace_path":{
+                    "type":"string" ,
+                    "default": null,
+                    "description": "Path to Local Folder, like /home/yourname/Documents/PMworkspace. From PM worspace PHP Trigger and Dynaform Script will be written here."
+                }
+            }
+        }
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
