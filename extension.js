@@ -1,7 +1,4 @@
-/** 
- * Client ID: GVKFCIHGYSQRYJYVJHKBVKZNPHCZEEYL
- * Client Secret: 359762368574d98699a1af7047158145
-*/
+
 //TODO: signaler superagent comme require
 const vscode = require('vscode');
 const superagent = require('superagent');

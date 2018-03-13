@@ -38,7 +38,7 @@ Settings | Value  | Description
 > * Tip 2 : You can now use snippet.
 > * Tip 3 : **Enjoy !**
 
-![Screen](/images/pmkr.gif)
+![Screen](/images/pmkr external editor.gif)
 
 -----------------------------------------------------------------------------------------------------------
 ## What you cannot do
