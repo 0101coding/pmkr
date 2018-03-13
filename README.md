@@ -1,4 +1,6 @@
 # ProcessMaker External Editor README
+This is not an official editor.
+I am not affiliated with ProcessMaker
 
 Update PHP trigger and Dynaform JavaScript in Visual Studio Code.
 
