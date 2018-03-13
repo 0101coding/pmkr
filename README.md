@@ -15,7 +15,7 @@ One simple command PMKR : Sync.
 
 > **Must be in user settings.**
 
-Settings | Value  | Description 
+Settings | Example Value  | Description 
 ---------|--------|------------
 `pmkr_workspace`|"workflow"|ProcessMaker workspace, default is workflow
 `pmkr_client_id`|"GVKFCISAMPLEVJHKBVKZNPHCZEEYL"|ProcessMaker Client id
@@ -38,10 +38,12 @@ Settings | Value  | Description
 > * Tip 2 : You can now use snippet.
 > * Tip 3 : **Enjoy !**
 
-![Screen](/images/pmkr external editor.gif)
+![Screen](https://github.com/chrdoud/pmkr/blob/master/images/pmkr%20external%20editor.gif)
 
 -----------------------------------------------------------------------------------------------------------
 ## What you cannot do
+> * Create Triggers, must be create in ProcessMakers
+> * Create Dynaform script, must be create in ProcessMakers
 
 ## Requirements
 * SuperAgent : npm install superagent
