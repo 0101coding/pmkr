@@ -94,5 +94,10 @@
         "superagent": "^3.8.1",
         "fs-extra": "",
         "mkdirp": ""
-    }
+    },
+    "extensionDependencies": [
+        "visionmedia.superagent",
+        "jprichardson.node-fs-extra",
+        "substack.node-mkdirp"
+    ]
 }
