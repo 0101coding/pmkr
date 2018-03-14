@@ -118,7 +118,7 @@ function activate(context) {
     });
 
     context.subscriptions.push(disposable);
-    context.subscriptions.push(disposable2);
+    //context.subscriptions.push(disposable2);
 }
 exports.activate = activate;
 
@@ -127,21 +127,21 @@ function deactivate() {
 }
 exports.deactivate = deactivate;
 
-function newSync(){
-    to_sync.count_js = 0;
-    to_sync.count_php = 0;
-    to_sync.code_php = [];
-    to_sync.code_js = [];
-    if ((fs.existsSync(loc_workspace))&&(loc_workspace.length>2)){
-        try {
-            fs.removeSync(loc_workspace);
-        } catch (error) {
-            console.log(error);
+// function newSync(){
+//     to_sync.count_js = 0;
+//     to_sync.count_php = 0;
+//     to_sync.code_php = [];
+//     to_sync.code_js = [];
+//     if ((fs.existsSync(loc_workspace))&&(loc_workspace.length>2)){
+//         try {
+//             fs.removeSync(loc_workspace);
+//         } catch (error) {
+//             console.log(error);
             
-        }
-        sync();
-    }
-}
+//         }
+//         sync();
+//     }
+// }
 
 async function onSaveDoc(text_doc) {
     if (text_doc.languageId = "javascript") await toSyncJS(text_doc.fileName, text_doc.getText());
