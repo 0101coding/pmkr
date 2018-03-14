@@ -48,8 +48,9 @@ Settings | Example Value  | Description
 > * Create Dynaform script, must be create in ProcessMakers
 
 ## Requirements
-* SuperAgent : npm install superagent
-
+* SuperAgent : npm install -g superagent
+* fs-extra : npm install -g fs-extra
+* mkdirp : npm install -g mkdirp
 ## Known Issues
 * Settings must be define in user settings
 
