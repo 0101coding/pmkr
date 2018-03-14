@@ -12,7 +12,6 @@
     ],
     "activationEvents": [
         "onCommand:pmkr.sync",
-        "onCommand:pmkr.force_new_sync",
         "workspaceContains:**/.PMKRProcess"
     ],
     "main": "./extension",
@@ -21,11 +20,6 @@
             {
             "command": "pmkr.sync",
             "title": "Sync",
-            "category": "PMKR"
-            },
-            {
-            "command": "pmkr.force_new_sync",
-            "title": "Force New Sync",
             "category": "PMKR"
             }
         ],

@@ -96,7 +96,7 @@ function activate(context) {
     }
     console.log('Congratulations, your extension "pmkr" is now active!');
     let disposable = vscode.commands.registerCommand('pmkr.sync', sync); 
-    let disposable2 = vscode.commands.registerCommand('pmkr.force_new_sync', newSync);
+    //let disposable2 = vscode.commands.registerCommand('pmkr.force_new_sync', newSync);
     
     bar_sync.show();
 
