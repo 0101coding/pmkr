@@ -383,9 +383,8 @@ function endPopulate() {
     //write to fs
     fs.writeFileSync(loc_workspace + "/.PMKRProcess", JSON.stringify(process));
     fs.writeFileSync(loc_workspace + "/.PMKRToSync", JSON.stringify(to_sync));
-    let uri=vscode.Uri.file(loc_workspace);
+    let uri=vscode.Uri.file(loc_workspace+pm_workspace+".code-workspace");
     console.log(uri);
-    
     vscode.commands.executeCommand("vscode.openFolder",uri)
     .then((res)=>{console.log(res);});
 
