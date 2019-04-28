@@ -1,0 +1,11 @@
+{
+    "pmkr_workspace":"workflow",
+    "pmkr_api_ver": "/api/1.0",
+    "pmkr_auth_url": "/oauth2/token",
+    "pmkr_base_url": "",
+    "pmkr_client_id": "",
+    "pmkr_client_secret": "",
+    "pmkr_loc_workspace_path": "/Users/***/Development/ProcessMaker/Workspace",
+    "pmkr_username": "**",
+    "pmkr_userpassword": "**"
+}

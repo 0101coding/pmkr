@@ -5,6 +5,7 @@ const superagent = require('superagent');
 const fs = require('fs-extra');
 const mkdirp = require('mkdirp');
 
+var localSettings = 0; //used to set 
 var token;
 var process = [];
 var to_sync = {};
@@ -21,56 +22,57 @@ var bar_sync = vscode.window.createStatusBarItem(1);
 var abort;
 
 //DONE: configurer les constantes suivantes
-let conf = vscode.workspace.getConfiguration();
-let b = conf.get("pmkr_workspace");
+let conf = getLocalSettings(); //vscode.workspace.getConfiguration();
+console.log(conf);
+let b = (localSettings == 1) ? conf.pmkr_workspace : conf.get("pmkr_workspace");
 const pm_workspace = "/" + b;
 if (!b) {
     vscode.window.showErrorMessage("PMKR : Setting Error; pmkr_workspace cannot be 'null'");
     abort = true;
 }
-b = conf.get("pmkr_client_id");
+b = (localSettings == 1) ? conf.pmkr_client_id  : conf.get("pmkr_client_id");
 const pm_client_id = b;
 if (!b) {
     vscode.window.showErrorMessage("PMKR : Setting Error; pmkr_client_id cannot be 'null'");
     abort = true;
 }
-b = conf.get("pmkr_client_secret");
+b = (localSettings == 1) ? conf.pmkr_client_secret  : conf.get("pmkr_client_secret");
 const pm_client_secret = b;
 if (!b) {
     vscode.window.showErrorMessage("PMKR : Setting Error; pmkr_client_secret cannot be 'null'");
     abort = true;
 }
-b = conf.get("pmkr_username");
+b = (localSettings == 1) ? conf.pmkr_username : conf.get("pmkr_username");
 const pm_username = b;
 if (!b) {
     vscode.window.showErrorMessage("PMKR : Setting Error; pmkr_username cannot be 'null'");
     abort = true;
 }
-b = conf.get("pmkr_userpassword");
+b =  (localSettings == 1) ? conf.pmkr_userpassword : conf.get("pmkr_userpassword");
 const pm_userpassword = b;
 if (!b) {
     vscode.window.showErrorMessage("PMKR : Setting Error; pmkr_userpassword cannot be 'null'");
     abort = true;
 }
-b = conf.get("pmkr_base_url");
+b = (localSettings == 1) ? conf.pmkr_base_url : conf.get("pmkr_base_url");
 const pm_base_url = b;
 if (!b) {
     vscode.window.showErrorMessage("PMKR : Setting Error; pmkr_base_url cannot be 'null'");
     abort = true;
 }
-b = conf.get("pmkr_auth_url");
+b = (localSettings == 1) ? conf.pmkr_auth_url : conf.get("pmkr_auth_url");
 const pm_auth_url = pm_base_url + pm_workspace + b;
 if (!b) {
     vscode.window.showErrorMessage("PMKR : Setting Error; pmkr_auth_url cannot be 'null'");
     abort = true;
 }
-b = conf.get("pmkr_api_ver");
+b = (localSettings == 1) ? conf.pmkr_api_ver : conf.get("pmkr_api_ver");
 const pm_api_ver = b;
 if (!b) {
     vscode.window.showErrorMessage("PMKR : Setting Error; pmkr_api_ver cannot be 'null'");
     abort = true;
 }
-b = conf.get("pmkr_loc_workspace_path");
+b = (localSettings == 1) ? conf.pmkr_loc_workspace_path : conf.get("pmkr_loc_workspace_path");
 // on multi process maker workspace
 //const pm_loc_workspace=b;
 //const loc_workspace = b + pm_workspace;
@@ -555,4 +557,19 @@ async function pmAuth() {
             }
         });
     return response;
+}
+
+function getLocalSettings() { 
+    
+    let currentWorkspacePath = vscode.workspace.workspaceFolders[0]; 
+    if (fs.existsSync(currentWorkspacePath.uri.path + "/pmkr.json")) {
+        localSettings = 1;
+        let text = fs.readFileSync(currentWorkspacePath.uri.path + "/pmkr.json");
+        let config = JSON.parse(text);
+        return config;
+    }
+    else{
+        localSettings = 0;
+        return vscode.workspace.getConfiguration();
+    } 
 }
