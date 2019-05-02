@@ -3,7 +3,7 @@
     "displayName": "PMKR",
     "description": "ProcessMaker External Editor",
     "version": "0.0.1",
-    "publisher": "Chris Doudet",
+    "publisher": "ChrisDoudet",
     "engines": {
         "vscode": "^1.20.0"
     },

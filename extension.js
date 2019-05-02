@@ -562,9 +562,9 @@ async function pmAuth() {
 function getLocalSettings() { 
     
     let currentWorkspacePath = vscode.workspace.workspaceFolders[0]; 
-    if (fs.existsSync(currentWorkspacePath.uri.path + "/pmkr.json")) {
+    if (fs.existsSync(currentWorkspacePath.uri.fsPath + "/pmkr.json")) {
         localSettings = 1;
-        let text = fs.readFileSync(currentWorkspacePath.uri.path + "/pmkr.json");
+        let text = fs.readFileSync(currentWorkspacePath.uri.fsPath + "/pmkr.json");
         let config = JSON.parse(text);
         return config;
     }
